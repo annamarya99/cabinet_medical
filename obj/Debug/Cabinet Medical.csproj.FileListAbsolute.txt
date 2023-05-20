@@ -1,0 +1,19 @@
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Cabinet Medical.exe.config
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Cabinet Medical.exe
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Cabinet Medical.pdb
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet Medical.csproj.AssemblyReference.cache
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet Medical.csproj.SuggestedBindingRedirects.cache
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet_Medical.Properties.Resources.resources
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet Medical.csproj.GenerateResource.cache
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet Medical.csproj.CoreCompileInputs.cache
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet Medical.exe
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet Medical.pdb
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Guna.UI.dll
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet Medical.csproj.CopyComplete
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet_Medical.Patients.resources
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet_Medical.Doctors.resources
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\MySql.Data.DLL
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Renci.SshNet.Async.dll
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Renci.SshNet.dll
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Renci.SshNet.xml
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Renci.SshNet.Async.xml
