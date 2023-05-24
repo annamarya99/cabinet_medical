@@ -17,3 +17,7 @@ C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\
 C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Renci.SshNet.dll
 C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Renci.SshNet.xml
 C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\bin\Debug\Renci.SshNet.Async.xml
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet_Medical.Login.resources
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet_Medical.Admin.resources
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet_Medical.Tests.resources
+C:\Users\anuzz\OneDrive\Documents\CSIE\ANUL2\SEM2\PAW\Cabinet Medical\obj\Debug\Cabinet_Medical.Results.resources

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,64 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Threading;
-using System.Xml.Linq;
-using MySql.Data.MySqlClient;
-using System.Globalization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Cabinet_Medical
 {
-    public partial class Patients : Form
+    public partial class Tests : Form
     {
-        public int count = 101;
-        //List<Pacient> pacientsList = new List<Pacient> ();
-        
-        public Patients()
+        public Tests()
         {
             InitializeComponent();
-           
-           
-
-            GraphicsPath newgraph = new GraphicsPath();
-            newgraph.StartFigure();
-            newgraph.AddArc(new Rectangle(0, 0, 20, 20), 180, 90);
-            newgraph.AddLine(20, 0, button1.Width - 20, 0);
-            newgraph.AddArc(new Rectangle(panel3.Width - 20, 0, 20, 20), -90, 90);
-            newgraph.AddLine(button1.Width, 20, button1.Width, button1.Height - 20);
-            newgraph.AddArc(new Rectangle(button1.Width - 20, button1.Height - 20, 20, 20), 0, 90);
-            newgraph.AddLine(button1.Width - 20, button1.Height, 20, button1.Height);
-            newgraph.AddArc(new Rectangle(0, button1.Height - 20, 20, 20), 90, 90);
-            newgraph.CloseAllFigures();
-            button1.Region = new Region(newgraph);
         }
-
-
-        private void Patients_Load(object sender, EventArgs e)
-        {
-            string MyConnection2 = "datasource=localhost;port=3306;username=root;password=root";
-            string Query = "select * from counters.patients;";
-            MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
-            MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
-            MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-            MyAdapter.SelectCommand = MyCommand2;
-            DataTable dTable = new DataTable();
-            MyAdapter.Fill(dTable);
-            gunaDataGridView1.DataSource = dTable;
-
-
-            this.gunaDataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSeaGreen;
-
-            gunaDataGridView1.ColumnHeadersVisible = true;
-            gunaDataGridView1.Columns[0].HeaderText = "ID";
-            gunaDataGridView1.Columns[1].HeaderText = "Pacient name";
-            gunaDataGridView1.Columns[2].HeaderText = "Pacient phone";
-            gunaDataGridView1.Columns[3].HeaderText = "Pacient adress";
-            gunaDataGridView1.Columns[4].HeaderText = "Pacient gender";
-            gunaDataGridView1.Columns[5].HeaderText = "Pacient birth date";
-        }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -73,7 +26,7 @@ namespace Cabinet_Medical
                 //This is my connection string i have assigned the database file address path
                 string MyConnection2 = "datasource=localhost;port=3306;username=root;password=root";
                 //This is my insert query in which i am taking input from the user through windows forms
-                string Query = "insert into counters.patients(name, phone, adress, gender, dateBirth) values('" + this.textBox1.Text + "','" + this.textBox2.Text + "','" + this.textBox3.Text + "','" + this.comboBox1.GetItemText(comboBox1.SelectedItem) + "','" + this.dateTimePicker1.Text + "');";
+                string Query = "insert into counters.tests(Name, Cost) values('" + this.textBox1.Text + "','" + this.textBox2.Text + "');";
                 //This is  MySqlConnection here i have created the object and pass my connection string.
                 MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
                 //This is command class which will handle the query and connection object.
@@ -95,16 +48,16 @@ namespace Cabinet_Medical
             {
                 string MyConnection2 = "datasource=localhost;port=3306;username=root;password=root";
                 //Display query
-                string Query = "select * from counters.patients;";
+                string Query = "select * from counters.tests;";
                 MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
                 MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
-                 MyConn2.Open();
+                MyConn2.Open();
                 //For offline connection we weill use  MySqlDataAdapter class.
                 MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
                 MyAdapter.SelectCommand = MyCommand2;
                 DataTable dTable = new DataTable();
                 MyAdapter.Fill(dTable);
-                gunaDataGridView1.DataSource = dTable;
+                TestGV.DataSource = dTable;
 
             }
             catch (Exception ex)
@@ -113,17 +66,39 @@ namespace Cabinet_Medical
             }
         }
 
+        private void Tests_Load(object sender, EventArgs e)
+        {
+            string MyConnection2 = "datasource=localhost;port=3306;username=root;password=root";
+            string Query = "select * from counters.tests;";
+            MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
+            MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
+            MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+            MyAdapter.SelectCommand = MyCommand2;
+            DataTable dTable = new DataTable();
+            MyAdapter.Fill(dTable);
+            TestGV.DataSource = dTable;
+
+
+            this.TestGV.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSeaGreen;
+
+            TestGV.ColumnHeadersVisible = true;
+            TestGV.Columns[0].HeaderText = "Test code";
+            TestGV.Columns[1].HeaderText = "Test name";
+            TestGV.Columns[2].HeaderText = "Cost";
+            
+        }
+
         private void button_delete_Click(object sender, EventArgs e)
         {
-            if (gunaDataGridView1.SelectedRows.Count > 0)
+            if (TestGV.SelectedRows.Count > 0)
             {
                 DialogResult result = MessageBox.Show("Sigur doriți să ștergeți această linie?", "Confirmare ștergere", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    int selectedRowIndex = gunaDataGridView1.SelectedRows[0].Index;
+                    int selectedRowIndex = TestGV.SelectedRows[0].Index;
 
                     // Obținerea valorii cheii primare a rândului selectat (presupunând că există o coloană cu cheia primară numită "ID")
-                    int selectedRowID = Convert.ToInt32(gunaDataGridView1.Rows[selectedRowIndex].Cells["idcounters"].Value);
+                    int selectedRowID = Convert.ToInt32(TestGV.Rows[selectedRowIndex].Cells["idtests"].Value);
 
                     // Crearea conexiunii la baza de date
                     string connString = "datasource=localhost;database=counters;port=3306;username=root;password=root";
@@ -135,13 +110,13 @@ namespace Cabinet_Medical
                         connection.Open();
 
                         // Ștergerea liniei din baza de date
-                        string deleteQuery = "DELETE FROM patients WHERE idcounters = @idcounters";
+                        string deleteQuery = "DELETE FROM tests WHERE idtests = @idtests";
                         MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, connection);
-                        deleteCommand.Parameters.AddWithValue("@idcounters", selectedRowID);
+                        deleteCommand.Parameters.AddWithValue("@idtests", selectedRowID);
                         deleteCommand.ExecuteNonQuery();
 
                         // Ștergerea rândului din DataGridView
-                        gunaDataGridView1.Rows.RemoveAt(selectedRowIndex);
+                        TestGV.Rows.RemoveAt(selectedRowIndex);
 
                         MessageBox.Show("Linia a fost ștearsă cu succes.", "Ștergere reușită", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -165,7 +140,7 @@ namespace Cabinet_Medical
             {
                 string MyConnection2 = "datasource=localhost;port=3306;username=root;password=root";
                 //Display query
-                string Query = "select * from counters.patients;";
+                string Query = "select * from counters.tests;";
                 MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
                 MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
                 //  MyConn2.Open();
@@ -174,7 +149,7 @@ namespace Cabinet_Medical
                 MyAdapter.SelectCommand = MyCommand2;
                 DataTable dTable = new DataTable();
                 MyAdapter.Fill(dTable);
-                gunaDataGridView1.DataSource = dTable;
+                TestGV.DataSource = dTable;
             }
             catch (Exception ex)
             {
@@ -182,43 +157,18 @@ namespace Cabinet_Medical
             }
         }
 
-
-
-      
-
-        
-
-        private void gunaDataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void TestGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 string MyConnection2 = "datasource=localhost;port=3306;username=root;password=root";
                 MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
-                MySqlCommand MyCommand2 = new MySqlCommand("UPDATE counters.patients SET name=@name, phone=@phone, adress=@adress, gender=@gender, dateBirth=@newDate WHERE idcounters=@id", MyConn2);
+                MySqlCommand MyCommand2 = new MySqlCommand("UPDATE counters.tests SET name=@name, cost=@cost WHERE idtests=@id", MyConn2);
                 MyConn2.Open();
-                MyCommand2.Parameters.AddWithValue("@id", gunaDataGridView1.Rows[e.RowIndex].Cells["idcounters"].Value.ToString());
-                MyCommand2.Parameters.AddWithValue("@name", gunaDataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString());
-                MyCommand2.Parameters.AddWithValue("@phone", gunaDataGridView1.Rows[e.RowIndex].Cells["phone"].Value.ToString());
-                MyCommand2.Parameters.AddWithValue("@adress", gunaDataGridView1.Rows[e.RowIndex].Cells["adress"].Value.ToString());
-                string gender = gunaDataGridView1.Rows[e.RowIndex].Cells["gender"].Value.ToString();
-                if (gender == "Women" || gender == "Male")
-                {
-                    MyCommand2.Parameters.AddWithValue("@gender", gender);
-                }
-                else
-                {
-                    MessageBox.Show("Gender must be 'Male' or 'Female'");
-                }
-                DateTime newDate;
-                if (DateTime.TryParseExact(gunaDataGridView1.Rows[e.RowIndex].Cells["dateBirth"].Value.ToString(), "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out newDate))
-                {
-                    MyCommand2.Parameters.AddWithValue("@newDate", newDate.ToString("dd-MM-yyyy"));
-                }
-                else
-                {
-                    MessageBox.Show("Invalid date format. Please use format 'dd-MM-yyyy'.");
-                    return;
-                }
+                MyCommand2.Parameters.AddWithValue("@id", TestGV.Rows[e.RowIndex].Cells["idtests"].Value.ToString());
+                MyCommand2.Parameters.AddWithValue("@name", TestGV.Rows[e.RowIndex].Cells["name"].Value.ToString());
+                MyCommand2.Parameters.AddWithValue("@cost", TestGV.Rows[e.RowIndex].Cells["cost"].Value.ToString());
+                
                 MyCommand2.ExecuteNonQuery();
                 MyConn2.Close();
             }
@@ -228,7 +178,7 @@ namespace Cabinet_Medical
             }
         }
 
-       
+        
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
@@ -238,10 +188,10 @@ namespace Cabinet_Medical
             this.Hide();
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Tests testForm = new Tests();
-            testForm.Show();
+            Patients patientsForm = new Patients();
+            patientsForm.Show();
 
             this.Hide();
         }
@@ -258,6 +208,7 @@ namespace Cabinet_Medical
         {
             this.Close();
         }
+
+        
     }
 }
-

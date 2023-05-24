@@ -16,7 +16,10 @@ namespace Cabinet_Medical
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Patients());
+            // Application.Run(new Patients());
+            //Application.Run(new Doctors());
+            Application.Run(new Login());
+            //Application.Run(new Results());
         }
     }
 }
